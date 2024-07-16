@@ -1,21 +1,27 @@
 {
   "name": "accredian-backend-task",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for the Accredian project",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.16.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mysql2": "^3.10.3",
-    "nodemailer": "^6.9.14",
-    "prisma": "^5.16.2"
-  }
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.2",
+    "prisma": "^3.4.1",
+    "@prisma/client": "^3.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
