@@ -9,7 +9,21 @@ const app = express();
 const prisma = new PrismaClient();
 
 // Middleware
-app.use(cors({ origin: 'https://accredian-frontend-task-mu-dusky.vercel.app' })); // Add your frontend URL here
+const allowedOrigins = [
+  'https://accredian-frontend-task-mu-dusky.vercel.app', 
+  'http://localhost:3000'
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin like mobile apps or curl requests
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 app.use(bodyParser.json());
 
 // Routes
@@ -54,7 +68,7 @@ app.post('/api/referrals', async (req, res) => {
 });
 
 // Server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
